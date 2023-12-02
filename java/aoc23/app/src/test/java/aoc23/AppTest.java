@@ -23,6 +23,6 @@ public class AppTest {
             System.err.println(e.toString());
             return;
         }
-        assertEquals(92, result);
+        assertEquals(62, result);
     }
 }

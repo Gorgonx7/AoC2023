@@ -46,46 +46,46 @@ public class LineUtilTest {
      * findFirstWordIndex tests
     */
     @Test
-    public void testOneReturnsZero(){
-        int result = LineUtil.findFirstWordIndex("one");
-        assertEquals(0, result);
+    public void testOneReturnsOne(){
+        String result = LineUtil.findFirstWord("one");
+        assertEquals("one", result);
     }
     @Test
-    public void testabconeReturnsThree(){
-        int result = LineUtil.findFirstWordIndex("abcone");
-        assertEquals(3, result);
+    public void testabconeReturnsOne(){
+        String result = LineUtil.findFirstWord("abcone");
+        assertEquals("one", result);
     }
     @Test
-    public void testabcOneReturnsThree(){
-        int result = LineUtil.findFirstWordIndex("abcOne");
-        assertEquals(3,result);
+    public void testabcOneReturnsOne(){
+        String result = LineUtil.findFirstWord("abcOne");
+        assertEquals("one",result);
     }
     @Test
-    public void testTwoOneTwoReturnsZero(){
-        int result = LineUtil.findFirstWordIndex("twoOnetwo");
-        assertEquals(0,result);
+    public void testTwoOneTwoReturnsTwo(){
+        String result = LineUtil.findFirstWord("twoOnetwo");
+        assertEquals("two",result);
     }
     /* 
      * findLastWordIndex tests
     */
     @Test
-    public void testLastOneReturnsZero(){
-        int result = LineUtil.findLastWordIndex("one");
-        assertEquals(0, result);
+    public void testLastOneReturnsOne(){
+        String result = LineUtil.findLastWord("one");
+        assertEquals("one", result);
     }
     @Test
-    public void testLastabconeReturnsThree(){
-        int result = LineUtil.findLastWordIndex("abcone");
-        assertEquals(3, result);
+    public void testLastabconeReturnsOne(){
+        String result = LineUtil.findLastWord("abcone");
+        assertEquals("one", result);
     }
     @Test
-    public void testLastabcOneReturnsThree(){
-        int result = LineUtil.findLastWordIndex("abcOne");
-        assertEquals(3,result);
+    public void testLastabcOneReturnsOne(){
+        String result = LineUtil.findLastWord("abcOne");
+        assertEquals("one",result);
     }
     @Test
-    public void testLastTwoOneTwoReturns6(){
-        int result = LineUtil.findLastWordIndex("twoOnetwo");
-        assertEquals(6,result);
+    public void testLastTwoOneThreeReturnsThree(){
+        String result = LineUtil.findLastWord("twoOnethree");
+        assertEquals("three",result);
     }
 }
