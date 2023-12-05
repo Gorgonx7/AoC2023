@@ -35,9 +35,7 @@ public class App {
             games.add(Parser.getGame(line));
         }
         for (Game game : games) {
-            if (game.isPossible(MAX_RED, MAX_GREEN, MAX_BLUE)){
-                result += game.getID();
-            }
+            result += game.generatePower();
         }
         return result;
     }

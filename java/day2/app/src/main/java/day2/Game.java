@@ -28,4 +28,21 @@ public class Game {
         }
         return true;
     }
+    public int generatePower(){
+        int minimum_red = 0;
+        int minimum_green = 0;
+        int minimum_blue = 0;
+        for(Round round : rounds){
+            if (round.get(Colour.RED) > minimum_red){
+                minimum_red = round.get(Colour.RED);
+            }
+            if (round.get(Colour.GREEN) > minimum_green){
+                minimum_green = round.get(Colour.GREEN);
+            }
+             if (round.get(Colour.BLUE) > minimum_blue){
+                minimum_blue = round.get(Colour.BLUE);
+            }
+        }
+        return minimum_red * minimum_green * minimum_blue;
+    }
 }
