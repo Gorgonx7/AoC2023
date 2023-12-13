@@ -18,6 +18,8 @@ public class TestState {
         assertTrue(result);
         result = testState.containsSpecialCharacter("R");
         assertFalse(result);
+        result = testState.containsSpecialCharacter("%");
+        assertFalse(result);
     }
     @Test public void TestReadInStateNoState(){
         ArrayList<String> worldMap = new ArrayList<String>();
@@ -97,42 +99,17 @@ public class TestState {
         "......755.\n" +
         "...$.*....\n" +
         ".664.598..\n";
-        int want = 4361;
+        int want = 467835;
         State state = new State(parseStringToLines(world));
 
         int got = state.scan();
         assertEquals(want, got);
     }
     @Test public void TestScanUpperLeft(){
-        String world = "467.\n"+
-        "...*";
-        int want = 467;
+        String world = "..7.\n"+
+        "..2*";
+        int want = 14;
         
-        State state = new State(parseStringToLines(world));
-        int got = state.scan();
-        assertEquals(want, got);
-    }
-    @Test public void TestScanUpperMiddle(){
-        String world = ".6..\n"+
-                       ".*..";
-        int want = 6;
-        
-        State state = new State(parseStringToLines(world));
-        int got = state.scan();
-        assertEquals(want, got);
-    }
-    @Test public void TestScanUpperRight(){
-        String world = "..3.\n"+
-                       ".*..";
-        int want = 3;
-        State state = new State(parseStringToLines(world));
-        int got = state.scan();
-        assertEquals(want, got);
-    }
-    @Test public void TestScanLeft(){
-        String world = "....\n"+
-                       "1*..";
-        int want = 1;
         State state = new State(parseStringToLines(world));
         int got = state.scan();
         assertEquals(want, got);

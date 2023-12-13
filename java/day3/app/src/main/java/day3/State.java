@@ -1,6 +1,8 @@
 package day3;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,7 +51,8 @@ public class State {
         }
     }
     public boolean containsSpecialCharacter(String s) {
-        return (s == null) ? false : s.matches("[^A-Za-z0-9 ]");
+
+        return s.equals("*");
     }
     // find a number and remove it from the world state (replace it with dots)
     public int findNumber(int y, int x) {
@@ -94,17 +97,22 @@ public class State {
         for(int row : symbols.keySet()){
             for(int loc : symbols.get(row)){
                 System.out.println("Scanning row: " + row + ", location: " + loc);
-                total += findNumber(row-1 , loc - 1);
-                total += findNumber(row-1 , loc);
-                total += findNumber(row-1 , loc+1);
-                total += findNumber(row , loc-1);
-                total += findNumber(row , loc+1);
-                total += findNumber(row+1 , loc-1);
-                total += findNumber(row+1 , loc);
-                total += findNumber(row+1 , loc+1);
-
-
-
+                ArrayList<Integer> foundNumbers = new ArrayList<Integer>();
+                foundNumbers.add(findNumber(row-1 , loc - 1));
+                foundNumbers.add(findNumber(row-1 , loc));
+                foundNumbers.add(findNumber(row-1 , loc+1));
+                foundNumbers.add(findNumber(row , loc-1));
+                foundNumbers.add(findNumber(row , loc+1));
+                foundNumbers.add(findNumber(row+1 , loc-1));
+                foundNumbers.add(findNumber(row+1 , loc));
+                foundNumbers.add(findNumber(row+1 , loc+1));
+                System.out.println(foundNumbers);
+                foundNumbers.removeAll(Collections.singleton(0));
+                
+                if (foundNumbers.size() != 2){
+                    continue;
+                }
+                total += foundNumbers.get(0) * foundNumbers.get(1);
             }
         }
         return total;
