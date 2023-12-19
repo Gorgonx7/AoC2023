@@ -7,7 +7,7 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
+
 
 public class App {
     public String getGreeting() {
@@ -19,15 +19,19 @@ public class App {
         InputStream is = classloader.getResourceAsStream("input");
         InputStreamReader streamReader = new InputStreamReader(is, StandardCharsets.UTF_8);
         BufferedReader reader = new BufferedReader(streamReader);
-        int result = 0;
+        PointCalculator.init_ticket_count();
         try {
         for(String line; (line = reader.readLine()) != null;){
-            result += PointCalculator.calculatePoints(line);
+            PointCalculator.calculatePoints(line);
         }
         } catch(Exception e) {
             System.err.println(e.toString());
             return;
         }
-        System.out.println("Result: " + result);
+        int total = 0;
+        for (int value : PointCalculator.ticket_count.values()){
+            total += value;
+        }
+        System.out.println("Result: " + total);
     }
 }
